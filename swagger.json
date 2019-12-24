@@ -1,0 +1,217 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "API node task",
+      "title": "Node Task"
+
+    },
+    "tags": [
+      {
+        "name": "category",
+        "description": "About Category",
+        "externalDocs": {
+        }
+      },
+      {
+        "name": "product",
+        "description": "About Products",
+        "externalDocs": {
+        }
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/api/categories": {
+            "get": {
+              "tags": [
+                "category"
+              ],
+              "summary": "Return all Category",
+              "description": "Returns all category",
+              "operationId": "getCategory",
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "200": {
+                  "description": "successful operation",
+                  "schema": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              }
+            }
+      },
+      "/api/category": {
+            "post": {
+              "tags": [
+                "category"
+              ],
+              "summary": "Add a new category",
+              "description": "",
+              "operationId": "saveCategory",
+              "produces": [
+                "application/xml",
+                "application/json"
+              ],
+              "parameters": [
+                {
+                  "in": "body",
+                  "name": "body",
+                  "description": "Category saved",
+                  "schema": {
+                    "$ref": "#/definitions/Category"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "successful operation",
+                  "schema": {
+                    "$ref": "#/definitions/Category"
+                  }
+                },
+                "400": {
+                  "description": "Invalid Category"
+                }
+              }
+            }
+      },
+      "/api/category/{id}": {
+            "delete": {
+                "tags": [
+                  "category"
+                ],
+                "summary": "Delete a category",
+                "description": "",
+                "operationId": "deleteCategory",
+                "produces": [
+                  "application/xml",
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "name": "id",
+                    "in": "path",
+                    "description": "category id to delete",
+                    "required": true,
+                    "type": "string"
+                  }
+                ],
+                "responses": {
+                  "400": {
+                    "description": "Invalid ID supplied"
+                  },
+                  "404": {
+                    "description": "Category not found"
+                  }
+                }
+              }
+      },
+      "/api/products": {
+        "get": {
+          "tags": [
+            "product"
+          ],
+          "summary": "Return all Product",
+          "description": "Returns all product",
+          "operationId": "getProduct",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/product": {
+        "post": {
+          "tags": [
+            "product"
+          ],
+          "summary": "Add a new product",
+          "description": "To add new product, Insert category _id in category field",
+          "operationId": "saveProduct",
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Product saved",
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "$ref": "#/definitions/Product"
+              }
+            },
+            "400": {
+              "description": "Invalid Product"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Category": {
+        "type": "object",
+        "properties": {
+          "category_name": {
+            "type": "string"
+          },
+          "active": {
+              "type":"boolean",
+              "default":true
+          }
+        },
+        "xml": {
+          "name": "Category"
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "product_name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "category": {
+            "type": "string"
+          },
+          "active": {
+              "type":"boolean",
+              "default":true
+          }
+        },
+        "xml": {
+          "name": "Category"
+        }
+      }
+    }
+  }
