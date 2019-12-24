@@ -34,7 +34,7 @@ Select GET `method`, click Try it out then execute it.
 Select POST `method`, click Try it out Edit the json value which you want then execute it.
 Select DELEE `mehod`, click Try it out insert required parameter then execute it.
 
-Swagger response handled with response core as well as response message.
+Swagger response handled with response code as well as response message.
 ## Development server
 
 Run `npm start` for a dev server it start `App Server Listening at 3001`. Navigate to `http://localhost:3001/api-docs/#/`. Open in browser.
